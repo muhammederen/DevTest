@@ -7,5 +7,8 @@ namespace DeveloperTest.Models
         public string Engineer { get; set; }
 
         public DateTime When { get; set; }
+
+        public string Customer { get; set; }
+        public string JobId { get; set; }
     }
 }
