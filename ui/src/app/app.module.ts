@@ -1,3 +1,4 @@
+
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
@@ -8,21 +9,30 @@ import { AppComponent } from './app.component';
 import { JobComponent } from './job/job.component';
 import { HomeComponent } from './home/home.component';
 import { JobDetailComponent } from './job-detail/job-detail.component';
+import { CustomerComponent } from './customer/customer.component';
+import { CustomerService } from './services/customer.service';
+import { ReactiveFormsModule } from '@angular/forms';
+import { CustomerDetailComponent } from './customer-detail/customer-detail.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     JobComponent,
     HomeComponent,
-    JobDetailComponent
+    JobDetailComponent,
+    CustomerComponent,
+    CustomerDetailComponent
   ],
   imports: [
     FormsModule,
     BrowserModule,
     HttpClientModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ReactiveFormsModule
   ],
-  providers: [],
+  providers: [
+    CustomerService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,0 +1,47 @@
+<h2>New customer form</h2>
+<form [formGroup]="customerFormGroup" (ngSubmit)="submitNewCustomer()">
+
+    <label>Customer Name</label><br>
+    <input formControlName="customerName">
+    <div *ngIf=" isSubmitted && f.customerName.errors">
+        <small *ngIf="f.customerName.errors.required">Customer Name is required</small>
+        <small *ngIf="f.customerName.errors.minlength">Customer Name must be at least 5 characters</small>
+    </div>
+    <br>
+
+    <label>Customer Type</label><br>
+    <select formControlName="customerType" (change)="customerTypeChanged($event)">
+        <option *ngFor="let customerTypeOption of customerTypeOptions;" [value]="customerTypeOption.id">
+            {{ customerTypeOption.description }}
+        </option>
+    </select>
+    <div *ngIf="isSubmitted && f.customerType.errors">
+        <small *ngIf="f.customerType.errors.required">Customer Type is required</small>
+    </div>
+    <br>
+
+    <input type="submit" value="Submit">
+
+</form>
+
+<h2>Customer list</h2>
+<table spacing="0">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Type</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let customer of customers">
+            <td>{{customer.customerId}}</td>
+            <td>{{customer.customerName}}</td>
+            <td>{{customer.customerType}}</td>
+            <td>
+                <a [routerLink]="['/customers', customer.customerId]">Open</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
